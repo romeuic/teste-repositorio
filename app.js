@@ -60,12 +60,38 @@ class Missao {
   }
 }
 
+class Liga {
+  constructor(nome) {
+    this.nome = nome;
+    this.herois = [];
+    this.missoes = [];
+  }
+  adicionarHeroi(heroi) {
+    this.herois.push(heroi);
+  }
+  criarMissao(titulo) {
+    const novaMissao = new Missao(titulo);
+    this.herois.forEach((heroi) => {
+      novaMissao.adicionarHeroi(heroi);
+    });
+    this.missoes.push(novaMissao);
+  }
+  listarMissoes() {
+    this.missoes.forEach((missao) => {
+      console.log(missao.titulo);
+      missao.getResumo();
+    });
+  }
+}
+
 const romeu = new Heroi("Romeu", "BeberÁgua");
 romeu.pontos = [45, 13, 56, 18, 79, 26];
 const julieta = new Heroi("Julieta", "SuperVisão");
 julieta.pontos = [45, 56, 33, 79, 12, 26];
 
-const missao = new Missao("Missao Teste");
-missao.adicionarHeroi(romeu);
-missao.adicionarHeroi(julieta);
-missao.getResumo();
+const ligaDev = new Liga("LigaDEV");
+ligaDev.adicionarHeroi(romeu);
+ligaDev.criarMissao("Missao 1");
+ligaDev.adicionarHeroi(julieta);
+ligaDev.criarMissao("Missao 2");
+ligaDev.listarMissoes();
