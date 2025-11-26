@@ -69,6 +69,12 @@ class Liga {
   adicionarHeroi(heroi) {
     this.herois.push(heroi);
   }
+  // método éxtra via sugestão de colega
+  adicionarHerois(herois) {
+    herois.forEach((heroi) => {
+      this.adicionarHeroi(heroi);
+    });
+  }
   criarMissao(titulo) {
     const novaMissao = new Missao(titulo);
     this.herois.forEach((heroi) => {
@@ -84,6 +90,7 @@ class Liga {
   }
 }
 
+// Código de teste das nossas classes
 const romeu = new Heroi("Romeu", "BeberÁgua");
 romeu.pontos = [45, 13, 56, 18, 79, 26];
 const julieta = new Heroi("Julieta", "SuperVisão");
